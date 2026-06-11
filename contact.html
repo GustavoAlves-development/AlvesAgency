@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Alves Agency</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-primary: #E0E0E0;
+            --brand-dark: #12141D;
+            --brand-accent: #0A2540;
+            --text-main: #333333;
+            --text-light: #666666;
+            --bg-light: #F8F9FA;
+            --white: #FFFFFF;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Syne', sans-serif;
+            color: var(--brand-dark);
+            line-height: 1.1;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .btn-primary {
+            background-color: var(--brand-dark);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--brand-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(10, 37, 64, 0.15);
+        }
+
+        .section-padding {
+            padding: 120px 0;
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--brand-dark);
+        }
+
+        .logo span {
+            color: var(--text-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-dark);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Hero Section */
+        .page-hero {
+            padding-top: 180px;
+            padding-bottom: 80px;
+            background: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: var(--brand-primary);
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-hero h1 {
+            font-size: 4rem;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0 120px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 64px;
+            background: var(--white);
+            border-radius: 24px;
+            padding: 64px;
+            box-shadow: 0 24px 48px rgba(0,0,0,0.03);
+        }
+
+        /* Contact Info */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+
+        .info-block h3 {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .info-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--bg-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .info-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--brand-dark);
+        }
+
+        .info-content h4 {
+            font-size: 1.125rem;
+            margin-bottom: 4px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+        }
+
+        .info-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Form */
+        .contact-form-container {
+            background: var(--bg-light);
+            padding: 48px;
+            border-radius: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--brand-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 8px;
+            background: var(--white);
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--brand-dark);
+            box-shadow: 0 0 0 4px rgba(18, 20, 29, 0.05);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--white);
+            padding: 80px 0 40px;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 64px;
+            margin-bottom: 64px;
+        }
+
+        .footer-brand p {
+            color: var(--text-light);
+            margin-top: 16px;
+            max-width: 400px;
+        }
+
+        .footer-links h4 {
+            font-size: 1.125rem;
+            margin-bottom: 24px;
+        }
+
+        .footer-links ul {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--brand-dark);
+        }
+
+        .footer-bottom {
+            padding-top: 32px;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        .legal-info {
+            display: flex;
+            gap: 24px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                padding: 40px;
+            }
+            .page-hero h1 { font-size: 3.5rem; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .form-row { grid-template-columns: 1fr; }
+            .contact-grid { padding: 24px; gap: 48px; }
+            .contact-form-container { padding: 32px 24px; }
+            .page-hero { padding-top: 140px; }
+            .page-hero h1 { font-size: 2.5rem; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+            .legal-info { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="/" class="logo">Alves<span>Agency</span></a>
+            <div class="nav-links">
+                <a href="/#services">Products</a>
+                <a href="/#about">About</a>
+                <a href="/#values">Values</a>
+            </div>
+            <a href="/" class="btn btn-primary desktop-btn" style="background-color: var(--bg-light); color: var(--brand-dark); border: 1px solid rgba(0,0,0,0.1);">Back to Home</a>
+            <button class="mobile-menu-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <header class="page-hero">
+        <div class="container page-hero-content reveal">
+            <h1>Get in Touch</h1>
+            <p>Ready to master your financial future? We are here to answer your questions and guide you toward the right digital products for your goals.</p>
+        </div>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid reveal delay-1">
+                
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <div class="info-block">
+                        <h3>Contact Details</h3>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                </svg>
+                            </div>
+                            <div class="info-content">
+                                <h4>Email Support</h4>
+                                <p>support@alvesagency.site</p>
+                                <p style="font-size: 0.85rem; margin-top: 4px;">We usually reply within 24 hours.</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                            </div>
+                            <div class="info-content">
+                                <h4>Headquarters</h4>
+                                <p>Av José Paulino Sorroche, 285</p>
+                                <p>Portal das Primaveras</p>
+                                <p>Brazil</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                            </div>
+                            <div class="info-content">
+                                <h4>Business Hours</h4>
+                                <p>Monday - Friday</p>
+                                <p>09:00 AM - 06:00 PM (BRT)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submission simulated successfully!');">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" id="firstName" class="form-control" placeholder="John" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" id="lastName" class="form-control" placeholder="Doe" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject" class="form-label">How can we help you?</label>
+                            <select id="subject" class="form-control" required>
+                                <option value="" disabled selected>Select an option...</option>
+                                <option value="products">Questions about Products/Courses</option>
+                                <option value="support">Technical Support</option>
+                                <option value="billing">Billing Inquiry</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" class="form-control" placeholder="Tell us more about your needs..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand reveal">
+                    <a href="/" class="logo">Alves<span>Agency</span></a>
+                    <p>Providing knowledge, strategies, and digital solutions to help you earn more, save intelligently, and build lasting wealth.</p>
+                </div>
+                <div class="footer-links reveal delay-1">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/#services">Our Products</a></li>
+                        <li><a href="/#about">About Us</a></li>
+                        <li><a href="/#values">Core Values</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links reveal delay-2">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="/contact">Contact Us</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom reveal delay-3">
+                <p>&copy; 2026 Alves Agency. All rights reserved.</p>
+                <div class="legal-info">
+                    <span><strong>Legal Name:</strong> 66.849.624 Gustavo Alves de Lima</span>
+                    <span><strong>CNPJ:</strong> 66.849.624/0001-96</span>
+                    <span><strong>Address:</strong> Av josé Paulno Sorroche, 285, Portal das primaveras - Brazil</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        @media (max-width: 768px) {
+            .desktop-btn { display: none; }
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach((element) => {
+                observer.observe(element);
+            });
+
+            // Mobile menu logic
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+
+            mobileBtn.addEventListener('click', () => {
+                if (navLinks.style.display === 'flex') {
+                    navLinks.style.display = 'none';
+                } else {
+                    navLinks.style.display = 'flex';
+                    navLinks.style.flexDirection = 'column';
+                    navLinks.style.position = 'absolute';
+                    navLinks.style.top = '80px';
+                    navLinks.style.left = '0';
+                    navLinks.style.width = '100%';
+                    navLinks.style.backgroundColor = '#fff';
+                    navLinks.style.padding = '24px';
+                    navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.05)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

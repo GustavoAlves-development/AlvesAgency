@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Alves Agency</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-primary: #E0E0E0;
+            --brand-dark: #12141D;
+            --brand-accent: #0A2540;
+            --text-main: #333333;
+            --text-light: #666666;
+            --bg-light: #F8F9FA;
+            --white: #FFFFFF;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Syne', sans-serif;
+            color: var(--brand-dark);
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul, ol {
+            padding-left: 24px;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .btn-primary {
+            background-color: var(--brand-dark);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--brand-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(10, 37, 64, 0.15);
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--brand-dark);
+        }
+
+        .logo span {
+            color: var(--text-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-dark);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Hero Section */
+        .legal-hero {
+            padding-top: 180px;
+            padding-bottom: 60px;
+            background: var(--white);
+            text-align: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .legal-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .legal-hero p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+        }
+
+        /* Legal Content */
+        .legal-content {
+            padding: 80px 0 120px;
+        }
+
+        .legal-document {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 64px;
+            border-radius: 16px;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .legal-document h2 {
+            font-size: 1.75rem;
+            margin: 40px 0 16px;
+            color: var(--brand-dark);
+        }
+
+        .legal-document h2:first-child {
+            margin-top: 0;
+        }
+
+        .legal-document p {
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .legal-document ul {
+            margin-bottom: 24px;
+            color: var(--text-main);
+        }
+
+        .legal-document li {
+            margin-bottom: 8px;
+        }
+
+        .legal-document strong {
+            color: var(--brand-dark);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--white);
+            padding: 80px 0 40px;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 64px;
+            margin-bottom: 64px;
+        }
+
+        .footer-brand p {
+            color: var(--text-light);
+            margin-top: 16px;
+            max-width: 400px;
+        }
+
+        .footer-links h4 {
+            font-size: 1.125rem;
+            margin-bottom: 24px;
+        }
+
+        .footer-links ul {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding-left: 0;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--brand-dark);
+        }
+
+        .footer-bottom {
+            padding-top: 32px;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        .legal-info {
+            display: flex;
+            gap: 24px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .desktop-btn { display: none; }
+            
+            .legal-hero { padding-top: 140px; }
+            .legal-hero h1 { font-size: 2.5rem; }
+            
+            .legal-document { padding: 32px 24px; }
+            
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+            .legal-info { flex-direction: column; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="/" class="logo">Alves<span>Agency</span></a>
+            <div class="nav-links">
+                <a href="/#services">Products</a>
+                <a href="/#about">About</a>
+                <a href="/#values">Values</a>
+            </div>
+            <a href="/contact" class="btn btn-primary desktop-btn" style="background-color: var(--bg-light); color: var(--brand-dark); border: 1px solid rgba(0,0,0,0.1);">Contact Us</a>
+            <button class="mobile-menu-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="legal-hero">
+        <div class="container reveal">
+            <h1>Privacy Policy</h1>
+            <p>Last updated: June 11, 2026</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="legal-content">
+        <div class="container">
+            <div class="legal-document reveal delay-1">
+                <h2>1. Introduction</h2>
+                <p>At <strong>Alves Agency</strong> ("we," "our," or "us"), your privacy is a top priority. This Privacy Policy outlines how we collect, use, protect, and handle your Personally Identifiable Information (PII) when you visit our website (alvesagency.site) and use our services, courses, and digital products.</p>
+                <p>By using our website, you consent to the data practices described in this policy.</p>
+
+                <h2>2. Information We Collect</h2>
+                <p>We may collect information from you when you register on our site, place an order, subscribe to a newsletter, fill out a form, or enter information on our site. The types of data we collect include:</p>
+                <ul>
+                    <li><strong>Personal Details:</strong> Name, email address, phone number, and billing information when purchasing our products.</li>
+                    <li><strong>Usage Data:</strong> Information about how you navigate and interact with our website, including IP address, browser type, device information, and pages visited.</li>
+                    <li><strong>Communications:</strong> Any messages, feedback, or inquiries you send to our support team through the contact form or direct email.</li>
+                </ul>
+
+                <h2>3. How We Use Your Information</h2>
+                <p>The information we collect from you may be used in the following ways:</p>
+                <ul>
+                    <li>To personalize your experience and deliver the type of content and product offerings in which you are most interested.</li>
+                    <li>To process your transactions securely and efficiently.</li>
+                    <li>To grant you access to purchased courses, e-books, and mentoring sessions.</li>
+                    <li>To send periodic emails regarding your order, course updates, or new educational resources.</li>
+                    <li>To improve our website functionality, customer service, and overall user experience.</li>
+                </ul>
+
+                <h2>4. Data Protection & Security</h2>
+                <p>We take the security of your data seriously. We implement a variety of security measures to maintain the safety of your personal information when you place an order or enter, submit, or access your information. All sensitive/credit information you supply is encrypted via Secure Socket Layer (SSL) technology.</p>
+                <p>We do not store complete credit card numbers on our servers; all payment processing is handled by secure, compliant third-party payment gateways.</p>
+
+                <h2>5. Cookies and Tracking Technologies</h2>
+                <p>We use cookies (small files transferred to your computer's hard drive through your Web browser) to enable our site to recognize your browser, capture certain information, and remember your preferences. This includes:</p>
+                <ul>
+                    <li>Session cookies to keep you logged into your account.</li>
+                    <li>Analytics cookies to compile aggregate data about site traffic and interactions so we can offer better site experiences in the future.</li>
+                </ul>
+                <p>You can choose to have your computer warn you each time a cookie is being sent, or you can choose to turn off all cookies through your browser settings. However, disabling cookies may affect the functionality of certain website features.</p>
+
+                <h2>6. Third-Party Disclosures</h2>
+                <p>We do not sell, trade, or otherwise transfer your personally identifiable information to outside parties. This does not include trusted third parties who assist us in operating our website, conducting our business, or servicing you (such as payment processors and email marketing platforms), so long as those parties agree to keep this information confidential.</p>
+
+                <h2>7. Your Data Rights</h2>
+                <p>Depending on your location and applicable laws (such as LGPD in Brazil), you have certain rights regarding your personal data:</p>
+                <ul>
+                    <li>The right to request access to the data we hold about you.</li>
+                    <li>The right to request the correction of inaccurate or incomplete data.</li>
+                    <li>The right to request the deletion of your personal data ("Right to be Forgotten").</li>
+                    <li>The right to opt-out of marketing communications at any time by clicking the "unsubscribe" link in our emails.</li>
+                </ul>
+
+                <h2>8. Contact Us</h2>
+                <p>If there are any questions regarding this Privacy Policy, or if you wish to exercise your data rights, you may contact us using the information below:</p>
+                <ul>
+                    <li><strong>Company Name:</strong> Alves Agency (66.849.624 Gustavo Alves de Lima)</li>
+                    <li><strong>CNPJ:</strong> 66.849.624/0001-96</li>
+                    <li><strong>Address:</strong> Av José Paulino Sorroche, 285, Portal das Primaveras, Brazil</li>
+                    <li><strong>Contact Page:</strong> <a href="/contact" style="color: var(--brand-dark); text-decoration: underline;">alvesagency.site/contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand reveal">
+                    <a href="/" class="logo">Alves<span>Agency</span></a>
+                    <p>Providing knowledge, strategies, and digital solutions to help you earn more, save intelligently, and build lasting wealth.</p>
+                </div>
+                <div class="footer-links reveal delay-1">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/#services">Our Products</a></li>
+                        <li><a href="/#about">About Us</a></li>
+                        <li><a href="/#values">Core Values</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links reveal delay-2">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="/contact">Contact Us</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom reveal delay-1">
+                <p>&copy; 2026 Alves Agency. All rights reserved.</p>
+                <div class="legal-info">
+                    <span><strong>Legal Name:</strong> 66.849.624 Gustavo Alves de Lima</span>
+                    <span><strong>CNPJ:</strong> 66.849.624/0001-96</span>
+                    <span><strong>Address:</strong> Av josé Paulno Sorroche, 285, Portal das primaveras - Brazil</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach((element) => {
+                observer.observe(element);
+            });
+
+            // Mobile menu logic
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+
+            mobileBtn.addEventListener('click', () => {
+                if (navLinks.style.display === 'flex') {
+                    navLinks.style.display = 'none';
+                } else {
+                    navLinks.style.display = 'flex';
+                    navLinks.style.flexDirection = 'column';
+                    navLinks.style.position = 'absolute';
+                    navLinks.style.top = '80px';
+                    navLinks.style.left = '0';
+                    navLinks.style.width = '100%';
+                    navLinks.style.backgroundColor = '#fff';
+                    navLinks.style.padding = '24px';
+                    navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.05)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
