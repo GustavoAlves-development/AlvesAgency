@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Extra Income Blueprint | Alves Agency Web App</title>
     
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2312141D'/><path d='M50 20 L20 80 L35 80 L42.5 60 L57.5 60 L65 80 L80 80 Z' fill='%23E0E0E0'/><polygon points='50,40 46,50 54,50' fill='%2312141D'/></svg>">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -331,22 +330,54 @@
             background: var(--bg-light);
             padding: 120px 0;
         }
-        .pricing-card {
-            max-width: 500px;
-            margin: 0 auto;
-            background: var(--white);
-            padding: 56px;
-            border-radius: 24px;
-            box-shadow: 0 32px 64px rgba(0,0,0,0.05);
-            text-align: center;
-            border: 1px solid rgba(0,0,0,0.05);
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
         }
-        .pricing-card h3 { font-size: 2rem; margin-bottom: 16px; }
-        .price { font-size: 4.5rem; font-family: 'Syne', sans-serif; font-weight: 800; color: var(--brand-dark); line-height: 1; margin-bottom: 24px; }
-        .price span { font-size: 1.25rem; color: var(--text-light); font-weight: 500; }
-        .pricing-features { text-align: left; margin: 32px 0; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 32px; }
-        .pricing-features li { display: flex; gap: 12px; margin-bottom: 16px; color: var(--text-main); }
+        .pricing-card {
+            background: var(--white);
+            padding: 40px 32px;
+            border-radius: 24px;
+            box-shadow: 0 16px 48px rgba(0,0,0,0.03);
+            text-align: left;
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            position: relative;
+        }
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 64px rgba(0,0,0,0.08);
+        }
+        .pricing-card.popular {
+            border: 2px solid var(--brand-dark);
+            box-shadow: 0 24px 64px rgba(0,0,0,0.08);
+        }
+        .popular-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--brand-dark);
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .pricing-card h3 { font-size: 1.5rem; margin-bottom: 8px; }
+        .pricing-card .desc { color: var(--text-light); font-size: 0.875rem; margin-bottom: 24px; min-height: 42px; }
+        .price { font-size: 3rem; font-family: 'Syne', sans-serif; font-weight: 800; color: var(--brand-dark); line-height: 1; margin-bottom: 24px; }
+        .price span { font-size: 1rem; color: var(--text-light); font-weight: 500; }
+        .pricing-features { margin: 24px 0 32px 0; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 24px; flex-grow: 1; }
+        .pricing-features li { display: flex; gap: 12px; margin-bottom: 16px; color: var(--text-main); font-size: 0.95rem; }
         .pricing-features svg { stroke: var(--success); width: 20px; height: 20px; flex-shrink: 0; }
+        .btn-pricing { width: 100%; padding: 16px; font-size: 1rem; margin-top: auto; }
 
         /* Footer */
         footer {
@@ -376,7 +407,7 @@
         }
         @media (max-width: 768px) {
             .product-hero h1 { font-size: 2.5rem; }
-            .pricing-card { padding: 32px 24px; }
+            .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
             .footer-grid { grid-template-columns: 1fr; gap: 40px; }
             .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
             .legal-info { flex-direction: column; gap: 8px; }
@@ -385,7 +416,6 @@
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav>
         <div class="container nav-container">
             <a href="/" class="logo">Alves<span>Agency</span></a>
@@ -393,7 +423,6 @@
         </div>
     </nav>
 
-    <!-- Product Hero Section -->
     <header class="product-hero">
         <div class="container product-hero-grid">
             <div class="hero-content reveal">
@@ -460,7 +489,6 @@
         </div>
     </header>
 
-    <!-- Inside the Blueprint -->
     <section class="modules section-padding">
         <div class="container">
             <div class="section-header text-center reveal">
@@ -496,11 +524,9 @@
         </div>
     </section>
 
-    <!-- Platform Experience -->
     <section class="platform section-padding">
         <div class="container platform-grid">
             <div class="platform-visual reveal">
-                <!-- Abstract visual representing progress -->
                 <div style="width: 100%; height: 400px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
                     <div style="width: 200px; height: 200px; border-radius: 50%; border: 20px solid rgba(224,224,224,0.1); border-top-color: var(--brand-primary); transform: rotate(45deg);"></div>
                     <div style="position: absolute; text-align: center;">
@@ -534,29 +560,80 @@
         </div>
     </section>
 
-    <!-- Pricing / CTA -->
     <section id="pricing" class="pricing">
-        <div class="container reveal">
-            <div class="pricing-card">
-                <h3>Lifetime App Access</h3>
-                <p style="color: var(--text-light); margin-bottom: 24px;">One-time payment. No hidden fees. Instant access to the blueprint and all future updates.</p>
-                <div class="price">
-                    $97<span>/lifetime</span>
-                </div>
-                
-                <ul class="pricing-features">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Full access to the Web Application</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> All 3 Core Income Modules</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Downloadable Toolkits & Templates</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> 7-Day Money-Back Guarantee</li>
-                </ul>
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <h2>Choose Your Access Plan</h2>
+                <p style="color: var(--text-light); font-size: 1.125rem;">Select the tier that best fits your goals and budget.</p>
+            </div>
 
-                <button class="btn btn-primary" style="width: 100%; padding: 20px; font-size: 1.125rem;" onclick="alert('Checkout integration ready to be connected!')">Secure Your Access Now</button>
+            <div class="pricing-grid reveal delay-1">
+                
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <p class="desc">Dip your toes in. Perfect for absolute beginners.</p>
+                    <div class="price">
+                        $10<span>/lifetime</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Dashboard Access</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> 1 Core Module (Marketplace)</li>
+                        <li style="opacity: 0.5; filter: grayscale(1);"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Toolkits & Templates</li>
+                        <li style="opacity: 0.5; filter: grayscale(1);"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Premium Support</li>
+                    </ul>
+                    <button class="btn btn-secondary btn-pricing" onclick="alert('Checkout $10 ready!')">Get Started</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Standard</h3>
+                    <p class="desc">Expand your reach with digital marketing strategies.</p>
+                    <div class="price">
+                        $22<span>/lifetime</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Dashboard Access</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> 2 Core Modules</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Standard Toolkits</li>
+                        <li style="opacity: 0.5; filter: grayscale(1);"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Premium Support</li>
+                    </ul>
+                    <button class="btn btn-secondary btn-pricing" onclick="alert('Checkout $22 ready!')">Get Standard</button>
+                </div>
+
+                <div class="pricing-card popular">
+                    <span class="popular-badge">Most Popular</span>
+                    <h3>Pro Blueprint</h3>
+                    <p class="desc">The complete system to unlock all income streams.</p>
+                    <div class="price">
+                        $31<span>/lifetime</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Full Dashboard Access</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> All 3 Core Modules</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> All Toolkits & Templates</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Priority Support</li>
+                    </ul>
+                    <button class="btn btn-primary btn-pricing" onclick="alert('Checkout $31 ready!')">Get Pro Access</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Elite VIP</h3>
+                    <p class="desc">Everything in Pro, plus 1-on-1 strategy sessions.</p>
+                    <div class="price">
+                        $42<span>/lifetime</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Everything in Pro</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Lifetime App Updates</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Future Modules Included</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> VIP 1-on-1 Mentorship</li>
+                    </ul>
+                    <button class="btn btn-secondary btn-pricing" onclick="alert('Checkout $42 ready!')">Join Elite VIP</button>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
